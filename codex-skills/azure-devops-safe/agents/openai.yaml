@@ -1,0 +1,5 @@
+interface:
+  display_name: "Azure DevOps Safe"
+  short_description: "Safe Azure Repos, PR, pipeline, and API workflows"
+  default_prompt: "Use $azure-devops-safe to inspect and work with this Azure DevOps project without persisting credentials or changing protected branches."
+
