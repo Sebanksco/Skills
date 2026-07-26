@@ -1,0 +1,7 @@
+interface:
+  display_name: "ONISEB Reliable Coding"
+  short_description: "Verify targets, schemas, changes, and deployments"
+  default_prompt: "Use $oniseb-reliable-coding to inspect the authoritative source and make a verified, reversible code change."
+
+policy:
+  allow_implicit_invocation: true
