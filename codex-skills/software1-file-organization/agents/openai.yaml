@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software File Organization"
+  short_description: "Save coding work locally and to its Drive mirror."
+  default_prompt: "Use $software1-file-organization to save project files in the canonical Software path and matching Google Drive type/project folders."
