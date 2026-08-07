@@ -1,0 +1,5 @@
+interface:
+  display_name: "SCOS Azure SQL Schema Guard"
+  short_description: "Use verified Azure and SQL schema before changes"
+  default_prompt: "Use $scos-azure-sql-schema-guard to inspect the verified Azure and SQL inventory before designing a database change."
+
