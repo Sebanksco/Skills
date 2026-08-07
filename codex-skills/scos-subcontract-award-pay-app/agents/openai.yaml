@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCOS Subcontract Award and Pay App"
+  short_description: "Compare bids, close scope gaps, and prepare awards"
+  default_prompt: "Use $scos-subcontract-award-pay-app to compare subcontractor bids against plans and specifications and prepare a review-only award recommendation."
