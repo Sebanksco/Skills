@@ -1,0 +1,4 @@
+# Generated from live Azure and SQL metadata; keep local and out of public Git.
+references/current-azure-sql-schema.md
+references/current-azure-sql-schema.json
+
