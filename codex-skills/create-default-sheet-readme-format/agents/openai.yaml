@@ -1,0 +1,7 @@
+interface:
+  display_name: "Create Default Sheet Read ME Format"
+  short_description: "Format Sheets README tabs as gray panels."
+  default_prompt: "Use $create-default-sheet-readme-format to format the README tab as a centered gray panel with white side padding."
+
+policy:
+  allow_implicit_invocation: true

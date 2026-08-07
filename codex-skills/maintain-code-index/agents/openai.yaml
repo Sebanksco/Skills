@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Code Index"
+  short_description: "Keep project indexes current and scoped"
+  default_prompt: "Use $maintain-code-index to refresh the project index for this workspace."

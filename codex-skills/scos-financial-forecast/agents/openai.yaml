@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCOS Financial Forecast"
+  short_description: "Evidence-backed project financial forecasting"
+  default_prompt: "Use $scos-financial-forecast to review a project's current financial position and top three schedule or cost actions."

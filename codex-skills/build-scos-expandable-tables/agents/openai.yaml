@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build SCOS Expandable Tables"
+  short_description: "Reuse SCOS parent-child table patterns"
+  default_prompt: "Use $build-scos-expandable-tables to build an SCOS parent-child table matching the Buyout SOV directory."

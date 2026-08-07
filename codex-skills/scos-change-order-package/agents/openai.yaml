@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCOS Change Order Package"
+  short_description: "Prepare and route evidence-backed SCOS change orders"
+  default_prompt: "Use $scos-change-order-package to trace architect revisions, build the PCO package, populate the SCOS portal for review, link supporting documents, and prepare controlled client issuance."

@@ -1,0 +1,64 @@
+{
+  "status": "DRAFT",
+  "project": {
+    "projectID": "DEMO",
+    "projectName": "Synthetic Demonstration Project",
+    "projectNumber": "DEMO-001"
+  },
+  "change": {
+    "changeOrderID": "DEMO-PCO-001",
+    "directiveType": "PCR",
+    "directiveNumber": "PCR-001",
+    "description": "Revise one supply diffuser location to coordinate with the updated reflected ceiling plan.",
+    "sourceDocumentUrl": "https://example.invalid/change-order-package.pdf"
+  },
+  "buyout": {
+    "buyoutUID": "00000000-0000-4000-8000-000000000001",
+    "buyoutPackage": "DEMO | CSI 23 | Mechanical",
+    "csiDivision": "23",
+    "csiDescription": "Mechanical"
+  },
+  "drawingReferences": [
+    {
+      "sheet": "M201",
+      "sheetTitle": "Level 1 HVAC Plan",
+      "detailSection": "Room 101",
+      "revisionCloud": "Revision 1 / Cloud 2",
+      "issueDate": "2026-01-15",
+      "pdfPage": 4,
+      "changeShown": "Supply diffuser moved east to align with the revised ceiling grid.",
+      "tradeImpact": "Requires a short duct branch relocation and diffuser reinstall.",
+      "evidenceFile": "demo-revised-drawings.pdf",
+      "evidenceStatus": "Confirmed"
+    }
+  ],
+  "cost": {
+    "subcontractorCO": 1000.0,
+    "gcOverheadProfit": 100.0,
+    "finalOCO": 1100.0
+  },
+  "schedule": {
+    "timeExtensionRequested": false,
+    "days": 0,
+    "zeroDaysConfirmed": true
+  },
+  "documents": [
+    {
+      "file": "demo-architect-pcr.pdf",
+      "role": "architect directive",
+      "pages": 2
+    },
+    {
+      "file": "demo-subcontractor-proposal.pdf",
+      "role": "subcontractor proposal",
+      "pages": 1
+    }
+  ],
+  "review": {
+    "evidenceStatus": "READY",
+    "drawingTraceStatus": "READY",
+    "scopeStatus": "READY",
+    "costReconciliationStatus": "READY",
+    "ownershipApprovalStatus": "PENDING"
+  }
+}

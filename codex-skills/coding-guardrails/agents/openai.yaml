@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "Coding Guardrails"
+  short_description: "Verify code before claims"
+  default_prompt: "Use $coding-guardrails when editing or explaining code."

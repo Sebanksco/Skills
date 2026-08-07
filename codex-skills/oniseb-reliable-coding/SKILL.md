@@ -1,106 +1,135 @@
 ---
 name: oniseb-reliable-coding
-description: Enforce reliable production coding and deterministic file saving for Codex and ChatGPT coding tasks. Use whenever creating, reviewing, modifying, debugging, migrating, or deploying code; working with Google Apps Script, Google Sheets, SQL, Azure Key Vault, APIs, webhooks, or automation; or generating files that must be saved to an exact user-specified path. Requires inspection of existing code and schemas, dynamic header validation, centralized configuration and secret access, explicit assumptions, tests, deployment notes, and verified no-fallback file writes.
+description: Enforce source-of-truth inspection and safe production coding. Use whenever creating, reviewing, modifying, debugging, migrating, or deploying code; pulling or pushing Azure DevOps or Google Apps Script projects; using clasp in multi-project workspaces; working with spreadsheet headers, schemas, properties, secrets, APIs, SQL, webhooks, or automation; or saving generated files to an exact path. Requires verified project identity, no invented identifiers, name-based schema access, incremental changes, tests, and explicit deployment and rollback controls.
 ---
 
 # ONISEB Reliable Coding
 
-Apply this workflow before producing or modifying production code or saving generated files.
+Use the authoritative live source, verify the exact target, inspect before editing, and fail closed when identity or schema facts are missing.
 
-## 1. Inspect before implementing
+## 1. Establish the source of truth
 
-- Read the existing target file and directly related functions before changing code.
-- Identify callers, downstream dependencies, schemas, headers, table names, property keys, API contracts, runtime, and deployment environment.
-- Never invent an identifier that can be read from existing code, configuration, schemas, connected systems, or user-provided files.
-- Classify task facts as `Confirmed`, `Inferred`, `Missing`, or `Proposed`.
-- When required information cannot be verified, mark it unresolved and use a clearly named placeholder only when necessary to deliver a safe scaffold.
+Before changing code:
 
-## 2. Enforce uniform coding standards
+1. Identify the system of record, project, repository or script, environment, and deployment target.
+2. Pull the current source into the exact local project directory.
+3. Inspect the pulled code, configuration, manifests, callers, schemas, and deployment files directly.
+4. Record facts as `Confirmed`, `Inferred`, `Missing`, or `Proposed`.
+5. Do not implement from stale copies, browser snippets, memory, or assumptions when the source can be inspected.
 
-- Preserve the repository's existing language, formatting, naming, module, and error-handling conventions unless the user requests a migration.
-- Centralize configuration, property-key names, endpoint URLs, timeouts, retry limits, feature flags, and environment selection.
-- Keep secret values out of source code, logs, spreadsheets, and generated documentation.
-- Access secrets through one approved secret-management abstraction. Prefer Azure Key Vault when the project uses Azure.
-- Validate inputs, external responses, database records, and spreadsheet schemas at system boundaries.
-- Use stable identifiers rather than names for joins, updates, deduplication, and synchronization.
-- Make writes idempotent where retries or duplicate events are possible.
-- Use structured errors and structured logging with correlation identifiers.
+### Azure DevOps and Git
+
+- Treat the verified Azure DevOps repository and branch as the development source of truth.
+- Before fetching or pulling, verify the organization, project, repository, `origin` URL, current branch, upstream, and `git status`.
+- Do not pull over uncommitted work or discard unrelated user changes.
+- Inspect the local checkout after pulling; do not rely only on the Azure browser view.
+- Keep diagnosis and inventory read-only. Do not modify source files or permanent remote branches until implementation is requested.
+- Perform implementation on a dedicated `codex/<task-name>` branch unless the user explicitly chooses another branch.
+- Do not commit directly to `main`, `master`, `dev`, release, or production branches without explicit authorization.
+- Never force-push, rewrite shared history, delete permanent branches or tags, or merge without explicit authorization.
+
+### Google Apps Script and clasp
+
+- Treat the intended Apps Script project as the source of truth and run `clasp pull` before inspection.
+- Operate from the exact project directory. In a multi-project workspace, each Apps Script project must have its own directory and `.clasp.json`.
+- Read `.clasp.json` and verify its `scriptId` against the intended Apps Script project before every `clasp pull` and every `clasp push`.
+- Treat `scriptId` as the required routing key. Stop if it is missing, ambiguous, or does not match the intended project.
+- Before `clasp push`, report the verified project directory and `scriptId`, run `clasp status`, inspect the diff, and confirm the push is within the requested scope.
+- Do not copy or reuse `.clasp.json` between projects. Do not push from a parent directory containing multiple Apps Script projects.
+- Do not use `clasp push --force` by default. Require a specific reason and explicit authorization.
+- Separate code changes from deployment. A request to edit or debug does not automatically authorize `clasp push`, deployment creation, or version promotion.
+
+## 2. Never invent identifiers
+
+- Never make up property names, secret names, environment variables, spreadsheet headers, sheet names, table or column names, API fields, webhook parameters, IDs, endpoints, configuration keys, or deployment names.
+- Discover identifiers from pulled code, manifests, schemas, property stores, environment templates, Key Vault references, connected systems, or user-provided documentation.
+- Preserve existing spelling, casing, and scope.
+- If an identifier cannot be verified, mark it `Missing` and stop the affected implementation or use an unmistakable placeholder only for a user-approved scaffold.
+- Propose new identifiers separately. For new configuration keys, prefer descriptive `UPPER_SNAKE_CASE`, centralize them, document their scope, and never embed the secret value.
+
+## 3. Access schemas and headers by name
+
+- Access spreadsheet, CSV, API, and record fields by verified name, never by unexplained ordinal position.
+- Before creating any database table, inventory every existing user table in
+  the target schema (at minimum the complete `dbo` list), then inspect the
+  columns, keys, indexes, constraints, row counts, relationships, and callers
+  of every overlapping object. Classify the result as Reuse, Evolve, Bridge,
+  or New; do not create a parallel authority without documented evidence.
+- Read the header row at runtime, preserve original header text, normalize only for matching, and build a header-name-to-index map.
+- Reject duplicate normalized headers and validate every required header before reading or writing data.
+- Fail clearly on missing headers; never silently skip a field or shift to a nearby column.
+- Avoid hard-coded column numbers. If an explicitly immutable external format requires positions, centralize and validate the mapping against expected header names.
+- Apply the same principle to database schemas and API payloads: use verified field names and contracts rather than positional assumptions.
+
+## 4. Implement conservatively
+
+- Preserve repository language, formatting, naming, module, and error-handling conventions unless migration is requested.
+- Establish the current build, test, lint, and runtime baseline before changing behavior.
+- Make one logical change at a time and verify it before continuing.
+- Avoid broad refactors, dependency upgrades, lockfile churn, or modernization during a targeted repair.
+- Centralize configuration, timeouts, retry limits, feature flags, endpoint selection, and property-key names.
+- Validate inputs and external responses at boundaries.
+- Make retried or event-driven writes idempotent.
+- Define retry, timeout, partial-failure, transaction, and rollback behavior.
 - Add dry-run support for destructive, bulk, financial, migration, provisioning, or external-write operations.
-- Describe transaction boundaries, retry behavior, partial-failure handling, and rollback.
 
-Read the applicable standards in `references/coding-standards.md`.
+### Enforce server authority
 
-## 3. Read and validate spreadsheet headers
+- Treat browser and client payloads as untrusted input. UI validation improves usability but never establishes final authority.
+- Enforce authentication, authorization, project scope, canonical identity, allowed state transitions, and write constraints on the server.
+- Re-read authoritative records and derive controlled values on the server. Ignore or reject conflicting browser-supplied values instead of trusting them.
+- Test protected workflows through the API without the browser, including missing, conflicting, stale, unauthorized, and replayed requests.
 
-For spreadsheet work:
+### Prefer primary code; use helpers deliberately
 
-- Read the configured header row at runtime.
-- Preserve original header values for display and writes.
-- Normalize only for matching.
-- Build a header-to-column-index map.
-- Reject duplicate normalized headers.
-- Validate all required headers before reading or writing rows.
-- Never silently skip a missing header.
-- Avoid hard-coded column numbers unless the file format is explicitly immutable.
-- Batch reads and writes; avoid cell-by-cell access.
+- Implement behavior in the primary module that owns the workflow whenever that keeps the authority and control flow clear.
+- Reuse an existing canonical helper before creating another one.
+- Create or extend a helper only when it isolates a cohesive policy, normalization, or reusable operation; removes meaningful duplication; or is independently testable and shared by multiple callers.
+- Do not create one-use pass-through wrappers, feature fragments, or helper files that hide the owning workflow without reducing complexity.
+- Never place server authority in a browser helper or create a helper that becomes a competing source of truth.
 
-Use or adapt `scripts/header_validator.js` when working in Google Apps Script.
+### Preserve the established UI system
 
-## 4. Save files deterministically
+- Inspect the current page and its canonical sibling workspaces before changing UI code.
+- Reuse existing layout containers, typography, spacing, colors, table hierarchy, dialogs, action buttons, status indicators, responsive behavior, and accessibility patterns.
+- Keep state-aware labels, indicators, disabled states, selection behavior, and expand/collapse controls consistent with the existing application.
+- Extend the existing stylesheet and component classes. Avoid inline styling, duplicate CSS, new visual systems, or cross-page navigation when the established workflow uses an in-page dialog.
+- Make deviations from the established UI an explicit proposal. Verify changed views at representative desktop and narrow widths and update asset cache versions when required by the repository.
 
-Follow `references/file-output-protocol.md` for every generated or modified file.
+Read [references/coding-standards.md](references/coding-standards.md) for detailed Git, clasp, schema, security, testing, and deployment rules.
 
-Non-negotiable rules:
+## 5. Protect secrets, production data, and PHI
 
-1. Resolve one canonical absolute destination path before writing.
-2. Treat the user-specified directory and filename as authoritative.
-3. Never silently substitute the current directory, home directory, repository root, `/tmp`, `/mnt/data`, Downloads, Desktop, or another fallback path.
-4. If the requested path is unavailable, unsafe, ambiguous, or outside the permitted workspace, stop and report the exact issue. Do not save elsewhere.
-5. Create parent directories only when the user requested or authorized directory creation.
-6. Write to a temporary file in the destination directory, flush and close it, then atomically rename or replace it into the final path when supported.
-7. Verify the final file exists at the exact canonical path and is a regular file.
-8. Verify expected extension, nonzero size when applicable, and optionally checksum or format validity for important artifacts.
-9. Never state that a file was saved unless verification succeeded.
-10. Report the exact verified path and any overwritten file explicitly.
+- Keep credentials, tokens, secret values, connection strings, and private keys out of source, logs, spreadsheets, fixtures, documentation, and chat output.
+- Use the project's approved secret manager and existing abstraction. Prefer Azure Key Vault when the Azure project already uses it.
+- Never copy PHI or production patient data into tests, logs, screenshots, prompts, or local fixtures. Use redacted or synthetic data.
+- Scan changed files and diffs for secrets, sensitive data, accidental destructive operations, and unintended generated files.
 
-Use `scripts/safe_write.py` for deterministic local writes when Python execution is appropriate.
+## 6. Verify before delivery
 
-## 5. Resolve output paths in this order
+- Run applicable tests, linters, type checks, syntax checks, builds, and representative execution paths.
+- Compare results to the recorded baseline.
+- Label every check `Passed`, `Failed`, or `Not run`; never imply an unperformed check succeeded.
+- Verify the diff contains only intended changes.
+- Treat deployment, migration, secret rotation, infrastructure mutation, pipeline execution, and production writes as separate actions requiring explicit authorization.
+- Record the pre-change commit or version and provide a tested or credible rollback path.
 
-Use exactly one destination source, in this precedence order:
+## 7. Save files deterministically
 
-1. Explicit destination in the current user request.
-2. Repository-approved destination documented in project instructions.
-3. Approved output-root environment variable, such as `ONISEB_OUTPUT_ROOT`.
-4. Stop with an unresolved-path error.
+Follow [references/file-output-protocol.md](references/file-output-protocol.md) for generated or modified files. Never silently fall back to another directory, and never claim a file was saved without verifying the exact final path.
 
-Never add a silent fallback destination.
+## 8. Deliver concisely
 
-For relative paths, resolve them only against the detected repository root or the explicitly configured output root. Never resolve them against an incidental shell working directory.
+Report:
 
-## 6. Test and review
+1. Verified target and source of truth
+2. Confirmed facts, assumptions, and unresolved items
+3. Changes and impact
+4. Configuration and secret requirements
+5. Tests performed and results
+6. Deployment status and steps
+7. Rollback
+8. Exact files written
+9. Remaining risks
 
-Before delivering code:
-
-- Run available tests, linters, type checks, syntax checks, and representative execution paths.
-- Include tests for normal input, missing required fields, missing headers, duplicate records, malformed identifiers, unauthorized access, timeouts, retries, partial failures, empty datasets, and unexpected external responses as applicable.
-- Scan for embedded secrets and accidental destructive operations.
-- Review file writes for path traversal, fallback paths, filename collisions, and unverified success claims.
-
-## 7. Deliver in a standard format
-
-Provide:
-
-1. `Understanding`
-2. `Verified structure`
-3. `Assumptions and unresolved items`
-4. `Impact analysis`
-5. `Implementation`
-6. `Configuration and secrets`
-7. `Tests performed`
-8. `Deployment steps`
-9. `Rollback`
-10. `Files written`, listing each exact verified absolute path
-11. `Remaining risks`
-
-For small tasks, combine sections without omitting material risks or file-path verification.
+Combine sections for small tasks without omitting material risks or verification gaps.
