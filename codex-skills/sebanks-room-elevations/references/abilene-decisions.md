@@ -19,6 +19,9 @@ Confirmed by Clinton Baird during the elevation coordination chat, 2026-10-17. V
 - Water fountain is on the **east wall of the main lobby, beside the bathroom**. It is **not on the south wall**. Apply this to the elevation and every mini-plan.
 - Fountain model, mounting AFF, and rough-in location remain subject to its approved submittal; no height was established by the user's location correction.
 - North windows and other openings need supported elevation dimensions. Do not treat a plan symbol as evidence of head/sill height.
+- Legacy CD/Final source `24019-111124-L.pdf` (11.11.24), A-2.3/02 window types, A-3.1/01 exterior front and A-3.2/04 section: the current CAD plan-north lobby facade has a **Type D storefront, 12 feet wide x 6 feet high, sill 3 feet / head 9 feet AFF**, with an upper **Type C clerestory, 12 feet wide x 4 feet high, sill 14 feet 10 inches / head 18 feet 10 inches AFF**. Preserve the current CAD horizontal location. Legacy geographic west/front corresponds to current CAD plan north; reverse the exterior viewpoint for the interior.
+- These are multi-lite storefront assemblies (three fixed-lite bays; Type D three rows, Type C one row), distinct from the owner's typical single-pane 5-by-5 windows. Do not put a center divider inside an individual lite. Show the legacy assembly divisions as source evidence for coordination rather than applying them globally to typical windows.
+- **Unresolved ceiling conflict:** the legacy lobby schedule/sections show a tall lobby (20 foot roof plate, ceiling to underside of joists), while the owner previously specified 9 feet. Keep the owner's datum and flag the upper glazing/tall wall as legacy reference for review; do not silently approve a ceiling change. A roof plate datum is not a verified horizontal finished-ceiling height.
 
 ## Copy/Supply 105
 
