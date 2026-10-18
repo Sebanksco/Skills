@@ -4,13 +4,15 @@ Confirmed by Clinton Baird during the elevation coordination chat, 2026-10-17. V
 
 ## Source hierarchy and identification
 
-- Current yellow/furniture floor layout controls changed room geometry and furniture/device placement. The black original power plan E-2.2 retains circuit intent; old box positions may change.
+- The CAD drawing imported into Revit is the source of truth for room dimensions and layout, per Clinton's later explicit instruction. Furniture electrical governs furniture/device requirements, not replacement room geometry. The black original power plan E-2.2 retains circuit intent; old box positions may change.
 - ATT 7 Furniture Electrical Plan, F0-03, printed 7/30/2026, is furniture support information. It does not establish all required building power/data devices.
 - ATT 2 Furniture Details and Images contains room casework and furniture details. The original architectural kitchen elevation is A-3.5 detail 02.
-- The signed floor plan dated 2026.06.03 is a current geometry reference. A file upload/name dated 10.14.26 does not by itself make the original 2024 drawing content a new revision.
-- Room identifiers conflict: Copy/Supply is **CAD 105 / furniture 110**; Break Room is **CAD/original 110 / furniture 115**. Other duplicate/reassigned furniture numbers require location-based verification.
+- The signed floor plan dated 2026.06.03 is a comparison reference only where it differs from the imported CAD. A file upload/name dated 10.14.26 does not by itself make the original 2024 drawing content a new revision.
+- Retain the owner's elevation labels while recording the verified imported-CAD labels: Copy/Supply = **elevation 105 / CAD 110**; Auxiliary Office 2 = **elevation 105A / CAD 105**; Break Room = **elevation 110 / CAD 115**; Group 1 Storage = **elevation 110S / duplicated CAD 110**. Earlier conversational CAD numbering was inaccurate; the actual DWG labels govern this crosswalk. Match by location and function.
 - Ceiling is **9 feet AFF**, per Clinton. Flag conflicts with older schedules.
 - Lobby-to-main-hall opening is **5 feet**, per Clinton, superseding the earlier 6 feet 1/4 inch reading. Do not rescale the whole plan.
+- The long main hallway is **6 feet 1-1/4 inches wide** to allow for drywall and a finished **6 foot center tile zone**. This is distinct from the 5 foot short connector. Do not substitute one width for the other.
+- Scope excludes **all hallway elevations, Mechanical/Electrical, and the mop-sink/Janitor room**. Create elevations for every wall of the remaining rooms, including vestibule, restrooms, and storage rooms.
 
 ## Lobby / Waiting 101
 
@@ -39,6 +41,10 @@ Confirmed by Clinton Baird during the elevation coordination chat, 2026-10-17. V
 - Blocking leaders must cover all upper cabinet groups. Appliance power and data/device mapping remain to be reconciled with the current room layout.
 
 ## Other specific heights
+
+- Office MD1 wall overheads: owner-selected **bottom 54 inches AFF**, source height **17 inches**, **top 71 inches AFF**. Verify source width: typically 60 inches, VOPS 78 inches, reception 60 inches north and 102 inches south. Exact horizontal positions and mounting rails require approved shops.
+- Typical windows: owner specified **60 inches overall height**, with **2 inches frame/jamb deducted at the top and bottom**, leaving **56 inches clear glass height**. This top/bottom interpretation is recorded for review; do not infer sill/head AFF from it. Retain actual CAD widths and flag non-typical assemblies. Windows are **single pane with no center vertical mullion**. Do not apply this to door leaves or invent a door/frame arrangement.
+- Storage 104 south-wall original duplex: **16 inches horizontally from the east corner**, **16 inches AFF to center**, per owner. This clears the CAD door opening and supersedes the earlier omitted/conflicting location.
 
 - Furniture electrical TV outlets in Group 2 and Children's Room use the specific **54 inches AFF** callout where shown; confirm the associated device and room crosswalk.
 - Above-counter Copy/Supply outlet and identified raised desk/counter outlets use **44 inches AFF**, superseding an earlier 40 inch interpretation.

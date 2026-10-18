@@ -31,7 +31,7 @@ For Abilene, read [references/abilene-decisions.md](references/abilene-decisions
 ## Devices and dimensions
 
 - Draw receptacles as readable faceplates similar to the accepted architectural example. Show data faceplates separately wherever required by the source. Preserve duplex/quad distinction using the legend or other explicit evidence.
-- Distinguish furniture electrical devices (`F`) from original power-plan devices (`P`) through a compact key/tag. Retain verified circuit identifiers without burying the elevation in callout text.
+- Draw original power-plan receptacles and data in black; draw furniture-plan electrical and data in blue. Use compact source/type tags (`P-R`, `P-Q`, `P-D`, `F-R`, `F-D`) and a legend that distinguishes duplex, quad and data-port symbols. Retain verified circuit identifiers without burying the elevation in callout text.
 - Use horizontal dimensions from an identified wall edge/corner to device center, and vertical AFF dimensions to the defined mounting reference. Replace redundant long outlet labels with these dimensions.
 - Default receptacle and data centerlines to **16 inches AFF** unless a specific source/user instruction overrides. Above-desk/counter positions identified at the approved raised height use **44 inches AFF**, not the superseded 40 inches. TV and equipment outlets use their specific documented heights; do not apply 44 inches indiscriminately.
 - If a box must relocate behind equipment, show existing and proposed positions with an arrow and the proposed AFF. Coordinate enclosure cutouts and access with the approved equipment detail.

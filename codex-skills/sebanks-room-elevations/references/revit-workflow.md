@@ -26,4 +26,6 @@ The initial Abilene elevations were drafted with detail lines and text notes in 
 - Group related operations in a supported batch transaction when possible. Check every operation's result and render the affected elevation and sheet afterward.
 - Verify that moving viewports actually changed the sheet even when an element-location comparison is unsupported by the API.
 - The original bridge did not expose RVT save or PDF export. Recheck current capabilities. Never claim a save, final PDF, paper size, or print margins solely from a successful image export.
+- A later bridge exposes `export_view_pdf`; verify returned files, page count, dimensions, colors, text and rendered pages before claiming PDF completion. A composed fit-to-page review set must be labeled accordingly; its view scale is not a verified printed scale.
+- Moving individual joined detail lines can stretch adjoining lines or open a blocking `Can't keep elements joined` failure dialog. Cancel the rejected transaction, inspect the actual state, and rebuild the affected drafted panel when necessary. Do not keep retrying the same move or assume a timed-out batch rolled back.
 - Revit modal dialogs can block bridge commands. Resolve visible dialogs before repeated retries; avoid unsupported arbitrary-script workarounds.
