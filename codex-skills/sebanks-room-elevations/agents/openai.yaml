@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEBANKS Room Elevations"
+  short_description: "Draft and coordinate SEBANKS room elevation sheets"
+  default_prompt: "Use $sebanks-room-elevations to create or revise this room's elevation sheet from the current plans."
