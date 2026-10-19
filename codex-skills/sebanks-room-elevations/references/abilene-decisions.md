@@ -55,3 +55,50 @@ Confirmed by Clinton Baird during the elevation coordination chat, 2026-10-17. V
 ## Source access
 
 Locate the above documents in the Abilene project SharePoint folders (`00 All Files`, construction documents, procurement, and approved submittals) or the authorized local project source folder. The enclosure guide in procurement is named `Telecommunications Enclosure (TE) Desgin Guide.pdf` (source spelling). Do not embed credentials, private chat photos, or source PDFs in a public skill repository.
+
+## Later owner revisions - October 18, 2026
+
+These decisions supersede earlier conflicting entries above.
+
+### Lobby ceiling, vestibule and glazing
+
+- Main lobby ceiling, including the north side, is 18 feet AFF. Other rooms retain their room-specific ceiling datums.
+- South reception and east walls have a 12-inch projecting fur-down. Its underside is 9 feet AFF; its 18-inch height places its top at 10 feet 6 inches AFF. Show the front band and visible adjoining-wall profiles.
+- Vestibule enclosure projects into the lobby with its top at 9 feet AFF, below the main 18-foot lobby ceiling.
+- Current CAD south vestibule face has two sliding tracks at y=625/623 and y=623/621, x=839.625 through 936.625: 97 inches overall. Show the double slider on the lobby-facing front. Actual head and frame profiles require verification.
+- Preserve legacy north clerestory head at 18 feet 10 inches AFF pending review. Flag its 10-inch conflict with the owner ceiling rather than silently changing glazing.
+
+### Lobby fountain and TV electrical
+
+- Owner confirms the Elkay high/low fountain and bottle filler are on CAD plan EAST beside the restrooms. The earlier west description is resolved.
+- Show a representative Elkay ezH2O outline. Final model, handedness, mounting AFF and rough-in follow the approved submittal.
+- Highlight the two-gang receptacle box relocation BEHIND the fountain in both sets. Cross out its source position and show an arrow. Final AFF must coordinate with rear access.
+- Mark the adjacent fountain data drop REMOVE.
+- Flag missing elevated TV power and data in the lobby. Wall, horizontal position and AFF remain to coordinate; do not invent a TV location.
+
+### Independent base and furnished sets
+
+- Maintain A-series base elevations with fixed cabinets, equipment, bathroom fixtures and electrical/data; exclude loose furniture.
+- Maintain independent F-series views and sheets adding loose furniture from the current yellow overlay, top-level CET furniture CAD blocks and ATT 2 details. Exclude the nested original architect representative furniture.
+- Use gray generic furniture outlines. Unverified product profiles, dimensions and finishes remain approximate. Keep one room per page and publish separate PDFs.
+- Hide unrelated OST_Viewers reference markers in each duplicated view. These can print as large dashed boxes even with crop visibility off. Preserve actual boundary and casework geometry.
+- Refresh standalone room review PDFs from the latest combined base PDF after revisions so mobile links retain current dimensions.
+
+### Lavatory mirrors, soap and receptacles
+
+- Mirrors OVER LAVATORIES are 24 inches wide by 36 inches high. Do not apply this size to unrelated glazing.
+- Automatic soap dispenser envelope: 11 inches high by 5 inches wide by 5 inches deep.
+- Provide 7 inches clear from mirror edge to adjacent receptacle faceplate edge: 1-inch clearance, 5-inch dispenser, 1-inch clearance.
+- Use 8.5 inches from mirror edge to receptacle OC with a 3-inch plate allowance. Verify the actual selected faceplate before rough-in.
+- In Rooms 102 and 103, center mirrors on the imported CAD lavatory centerlines. Dimension BOTH required mirror OC and receptacle OC from the PLAN NORTH finished wall corner, with centerline marks.
+- Room 102: mirror OC 33.125 inches (2 feet 9-1/8 inches); receptacle OC 53.625 inches (4 feet 5-5/8 inches), from north corner.
+- Room 103: mirror OC 33.125 inches (2 feet 9-1/8 inches); receptacle OC 12.625 inches (1 foot 0-5/8 inch), from north corner.
+- Proposed receptacles retain 44 inches AFF. Mirror and soap mounting AFF remain to verify; owner supplied sizes, not revised mounting heights.
+- Staff restrooms 112 and 113 show soap beside lav mirrors. Their existing outlets are elsewhere; do not invent a new adjacent outlet. Apply the 7-inch rule if one is provided.
+
+### Source review corrections
+
+- Group 1 / Room 111: ATT 2 page 17 specifies two wall-mounted MD1 storage units, 78 inches wide by 17 inches high, on the east and south sides. Include them in both sets with visible adjoining profiles and blocking leaders.
+- The Group 1 source calls these units overhead while illustrating low wall-hung credenzas. Do not automatically apply the office 54-inch mounting height. Mark bottom/top AFF to verify; illustrated vertical location and 12-inch depth are schematic.
+- Kitchen / Break Room 110 (furniture 115): furnished set includes DT1 Jive TCRA-4284 table, 42 by 84 by 36 inches high, and CH1 GAKG-1935 cart, 36 inches high by 19 deep by 35 wide, from ATT 2 page 16.
+- Place kitchen table/cart from current CAD blocks C88/C63. CAD cart footprint of about 43.05 by 21.75 inches differs from listed body dimensions; verify handle/caster envelope or model. Keep loose table/cart out of the base set.
