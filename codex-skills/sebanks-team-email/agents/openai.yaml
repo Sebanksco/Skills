@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sebanks Team Email"
+  short_description: "Resolve team first names to saved email addresses"
+  default_prompt: "Use $sebanks-team-email to email the named Sebanks teammates using their saved addresses."
