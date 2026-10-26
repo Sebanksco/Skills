@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Cleanup"
+  short_description: "Clean promotional email and routine notices"
+  default_prompt: "Use $email-cleanup to run my authorized mailbox cleanup."
