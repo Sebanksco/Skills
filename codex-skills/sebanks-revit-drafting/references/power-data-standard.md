@@ -30,7 +30,8 @@ Approved starting geometry at **1:64 (3/16 inch = 1 foot)**, in model feet:
 
 - Original architectural power-plan devices: **black RGB (0,0,0)**.
 - Furniture-plan power/data: **blue RGB (0,65,220)**, positioned, oriented, and dimensioned from the furniture source against current architectural geometry.
-- Owner-directed relocation destinations: **red RGB (220,0,0)**. Preserve their nearby original-device reference when requested. The owner can explicitly direct other symbols to red; for example, all three Janitorial GFCIs were explicitly made red. Do not infer color solely from whether a symbol is new.
+- New device additions: **green RGB (0,150,70)**. Relocated existing devices: **red RGB (220,0,0)**, with red arrows showing movement direction. This later confirmed color key supersedes earlier instructions that colored both additions and relocations red. Classify devices from the actual add/move callout; a raised or shifted existing device is a relocation, not an addition. Preserve nearby original-device references when requested.
+- Include actual colored duplex, quad, and data examples in the legend, labeled **GREEN = NEW ADDITIONS** and **RED = RELOCATED EXISTING DEVICES**; show a red movement-arrow example. Match the plan and PDF colors to this key. Keep the existing black/blue source distinctions for unchanged source devices. Flag ambiguous add-versus-relocate scope rather than assigning a misleading color.
 - Bottom of receptacle/data box: **16 inches AFF U.N.O.** in the current power-plan legend. This overrides the earlier centerline default for this plan. Project-specific raised mounting heights remain specific instructions, not a global 16-inch override.
 - Use dimensions from the specified opening/corner to device center. Avoid redundant wording such as "TO RECEP CL" when the dimension's reference is clear.
 - Receptacle legs meet the assigned wall face, not the far side or wall center. Maintain room-side association when walls shift.
