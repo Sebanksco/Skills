@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEBANKS Revit Drafting"
+  short_description: "Apply saved Revit power and data drawing standards"
+  default_prompt: "Use $sebanks-revit-drafting to revise this Revit power and data plan using our saved symbol and text standards."
