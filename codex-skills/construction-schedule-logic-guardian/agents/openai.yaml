@@ -1,0 +1,4 @@
+interface:
+  display_name: "Construction Schedule Logic Guardian"
+  short_description: "Audit construction schedule logic and date feasibility"
+  default_prompt: "Use $construction-schedule-logic-guardian to review this schedule and preserve its dependency network."
